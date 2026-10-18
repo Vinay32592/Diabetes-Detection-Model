@@ -45,8 +45,8 @@ function Prediction() {
       <section className="page-section prediction-page">
         <div className="container">
           <div className="page-header">
-            <h1>Diabetes Risk Assessment</h1>
-            <p>Enter patient health indicators below to receive an estimated risk score and evaluation.</p>
+            <h1>Machine Learning Diabetes Risk Assessment</h1>
+            <p>Enter patient physiological indicators below to receive real-time inference and calibrated risk classification from our trained Random Forest model.</p>
           </div>
 
           <div className="prediction-layout">

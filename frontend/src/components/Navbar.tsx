@@ -6,6 +6,7 @@ interface NavItem { id: PageId; label: string }
 const NAV_ITEMS: NavItem[] = [
   { id: 'home',         label: 'Home' },
   { id: 'predict',      label: 'Predict' },
+  { id: 'models',       label: 'ML Insights' },
   { id: 'history',      label: 'History' },
   { id: 'how-it-works', label: 'How It Works' },
   { id: 'about',        label: 'About' },

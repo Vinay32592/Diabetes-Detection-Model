@@ -13,27 +13,27 @@ function Home({ onNavigate }: HomeProps) {
 
       <section className="how-preview">
         <div className="container">
-          <h2>How It Works</h2>
+          <h2>Machine Learning Pipeline Workflow</h2>
           <div className="steps-grid">
             <article className="step-card">
               <span className="step-number">1</span>
-              <h3>Enter Metrics</h3>
-              <p>Provide routine health indicators like glucose, blood pressure, BMI, and age.</p>
+              <h3>Input Patient Metrics</h3>
+              <p>Enter 8 vital biomarkers. Zero-values for missing lab measurements are automatically imputed using median clinical statistics.</p>
             </article>
             <article className="step-card">
               <span className="step-number">2</span>
-              <h3>Validate Inputs</h3>
-              <p>The form verifies your data formats and checks values against valid physiological ranges.</p>
+              <h3>StandardScaler Normalization</h3>
+              <p>Inputs are standardized into z-score distribution space based on the training cohort statistics.</p>
             </article>
             <article className="step-card">
               <span className="step-number">3</span>
-              <h3>Calculate Risk</h3>
-              <p>The scoring algorithm evaluates your profile against clinical reference thresholds.</p>
+              <h3>Ensemble ML Evaluation</h3>
+              <p>Our tuned Random Forest model evaluates nonlinear decision boundaries to output a calibrated risk probability.</p>
             </article>
             <article className="step-card">
               <span className="step-number">4</span>
-              <h3>Track Records</h3>
-              <p>Review the calculated risk score and view your logged results in the history panel.</p>
+              <h3>Biomarker Contributions</h3>
+              <p>Inspect feature contributions, compare against 5 algorithm benchmarks, and preserve audit records.</p>
             </article>
           </div>
         </div>
@@ -43,11 +43,9 @@ function Home({ onNavigate }: HomeProps) {
 
       <section className="disclaimer-section">
         <div className="container narrow">
-          <h2>Medical Disclaimer</h2>
+          <h2>Clinical & Medical Disclaimer</h2>
           <p>
-            This application is designed as an informational health screening tool and is not intended to
-            provide medical diagnoses or replace clinical examinations. If you have concerns about your health,
-            please consult a licensed physician or specialist.
+            This application is designed as an informational health screening and data science research tool. It uses supervised machine learning models trained on retrospective observational data and is not intended to provide definitive medical diagnoses or replace clinical examinations. If you have concerns about your metabolic health, please consult a licensed medical provider.
           </p>
         </div>
       </section>

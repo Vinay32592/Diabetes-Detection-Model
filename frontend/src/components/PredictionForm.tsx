@@ -179,7 +179,7 @@ function PredictionForm({ onSubmit, onReset, loading }: PredictionFormProps) {
       <div className="form-actions">
         <button type="submit" className="btn btn-primary btn-glow" disabled={loading}>
           <Sparkles size={18} aria-hidden="true" />
-          {loading ? 'Analyzing...' : 'Check Diabetes Risk'}
+          {loading ? 'Evaluating ML Model...' : 'Run ML Risk Prediction'}
         </button>
         <button
           type="button"

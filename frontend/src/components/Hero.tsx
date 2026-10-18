@@ -1,4 +1,4 @@
-import { ArrowRight, ShieldCheck, Zap } from 'lucide-react'
+import { ArrowRight, ShieldCheck, Cpu, BarChart2 } from 'lucide-react'
 import type { PageId } from '../types'
 
 interface HeroProps {
@@ -17,42 +17,47 @@ function Hero({ onNavigate }: HeroProps) {
       <div className="container hero-grid">
         <div className="hero-content animate-rise">
           <p className="eyebrow">
-            <Zap size={14} aria-hidden="true" />
-            Health Screening & Risk Assessment
+            <Cpu size={14} aria-hidden="true" />
+            Machine Learning • Clinical Predictive Analytics
           </p>
           <h1>
-            Understand Your
-            <span className="text-gradient"> Diabetes Risk</span>
+            AI-Driven
+            <span className="text-gradient"> Diabetes Detection</span>
           </h1>
           <p className="hero-subtitle">
-            An interactive tool that analyzes key clinical health indicators to deliver real-time risk evaluations and maintain your assessment history.
+            An advanced machine learning platform powered by Scikit-Learn and FastAPI that analyzes 8 clinical biomarkers to deliver calibrated risk probabilities and explainable diagnostic insights.
           </p>
           <div className="hero-actions">
             <button type="button" className="btn btn-primary btn-glow" onClick={() => onNavigate('predict')}>
-              Check Your Risk
+              Start ML Prediction
               <ArrowRight size={18} aria-hidden="true" />
             </button>
             <button
               type="button"
               className="btn btn-secondary"
-              onClick={() => onNavigate('how-it-works')}
+              onClick={() => onNavigate('models')}
             >
-              How It Works
+              <BarChart2 size={16} />
+              Model Insights & Metrics
             </button>
           </div>
 
           <div className="hero-stats">
             <div className="stat-item">
+              <strong>86.4%</strong>
+              <span>Test Accuracy</span>
+            </div>
+            <div className="stat-item">
+              <strong>0.950</strong>
+              <span>ROC - AUC Score</span>
+            </div>
+            <div className="stat-item">
+              <strong>150</strong>
+              <span>Ensemble Trees</span>
+            </div>
+            <div className="stat-item">
               <strong>8</strong>
-              <span>Clinical inputs</span>
-            </div>
-            <div className="stat-item">
-              <strong>0–100</strong>
-              <span>Risk score scale</span>
-            </div>
-            <div className="stat-item">
-              <strong>Instant</strong>
-              <span>Results & history</span>
+              <span>Biomarkers</span>
             </div>
           </div>
         </div>
@@ -61,14 +66,15 @@ function Hero({ onNavigate }: HeroProps) {
           <div className="hero-card-icon">
             <ShieldCheck size={28} aria-hidden="true" />
           </div>
-          <h2>Clinical Risk Scoring</h2>
+          <h2>Trained Machine Learning Model</h2>
           <p>
-            Evaluate your key health metrics against standardized risk thresholds to assess diabetes likelihood and view a breakdown of contributing factors.
+            Trained and cross-validated on the authentic Pima Indians Diabetes Database using hyperparameter-optimized Random Forest and Gradient Boosting algorithms.
           </p>
           <ul className="hero-checklist">
-            <li>Weighted clinical metric analysis</li>
-            <li>Complete history log</li>
-            <li>Confidential & instant</li>
+            <li>5-Fold Stratified Cross-Validation</li>
+            <li>Median missing lab value imputation</li>
+            <li>Feature importance & contribution breakdown</li>
+            <li>Persistent prediction history & audit log</li>
           </ul>
         </div>
       </div>

@@ -1,6 +1,6 @@
-import type { PatientInputs, PredictionResult, HistoryResponse } from '../types';
+import type { PatientInputs, PredictionResult, HistoryResponse, ModelMetricsResponse, ModelInfo } from '../types';
 
-const API_URL = import.meta.env.VITE_API_URL || 'http://127.0.0.1:5000';
+export const API_URL = import.meta.env.VITE_API_URL || 'http://127.0.0.1:5000';
 
 async function handleResponse<T>(res: Response): Promise<T> {
   if (!res.ok) {
@@ -39,7 +39,17 @@ export async function deleteHistoryRecord(id: string): Promise<void> {
   await handleResponse<unknown>(res);
 }
 
-export async function checkHealth(): Promise<{ message: string }> {
+export async function fetchModelMetrics(): Promise<ModelMetricsResponse> {
+  const res = await fetch(`${API_URL}/model/metrics`);
+  return handleResponse<ModelMetricsResponse>(res);
+}
+
+export async function fetchModelInfo(): Promise<ModelInfo> {
+  const res = await fetch(`${API_URL}/model/info`);
+  return handleResponse<ModelInfo>(res);
+}
+
+export async function checkHealth(): Promise<{ status: string; service: string }> {
   const res = await fetch(`${API_URL}/`);
-  return handleResponse<{ message: string }>(res);
+  return handleResponse<{ status: string; service: string }>(res);
 }
