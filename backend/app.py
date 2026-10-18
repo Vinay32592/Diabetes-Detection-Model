@@ -222,6 +222,7 @@ def model_metrics():
 
 
 if __name__ == "__main__":
-    print("[*] Starting Flask backend using Colab model and scaler...")
-    print("[*] Backend running locally at http://127.0.0.1:5000")
-    app.run(port=5000, debug=True)
+    port = int(os.environ.get("PORT", 5000))
+    print(f"[*] Starting Flask backend using Colab model and scaler on port {port}...")
+    print(f"[*] Backend running at http://0.0.0.0:{port}")
+    app.run(host="0.0.0.0", port=port)
