@@ -56,7 +56,6 @@ Diabetes Detection/
 │   ├── model.pkl              # Trained SVM model from Colab
 │   ├── scaler.pkl             # Fitted StandardScaler from Colab
 │   ├── requirements.txt       # Backend Python dependencies
-│   ├── Procfile               # Gunicorn process definition
 │   └── .env.example
 ├── frontend/
 │   ├── src/                   # React 18 + TypeScript source code
@@ -75,9 +74,7 @@ Diabetes Detection/
 │   ├── train.py               # ML training & benchmark pipeline
 │   ├── predictor.py           # Python ML inference engine
 │   └── eda.py                 # Exploratory Data Analysis
-├── app.py                     # Root entrypoint for Gunicorn / Render
-├── main.py                    # Root entrypoint for alternative runners
-├── Procfile                   # Cloud web process definition
+├── app.py                     # Root entrypoint for Gunicorn on Render
 ├── requirements.txt           # Root Python dependencies for Render
 └── README.md
 ```
