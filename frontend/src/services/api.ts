@@ -1,6 +1,10 @@
 import type { PatientInputs, PredictionResult, HistoryResponse, ModelMetricsResponse, ModelInfo } from '../types';
 
-export const API_URL = import.meta.env.VITE_API_URL || 'http://127.0.0.1:5000';
+export const API_URL =
+  import.meta.env.VITE_API_URL ||
+  (import.meta.env.PROD
+    ? 'https://diabetes-detection-model-rkzs.onrender.com'
+    : 'http://127.0.0.1:5000');
 
 async function handleResponse<T>(res: Response): Promise<T> {
   if (!res.ok) {
