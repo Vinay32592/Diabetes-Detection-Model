@@ -28,7 +28,7 @@ function App() {
             <div className="container">
               <h1>How Machine Learning Prediction Works</h1>
               <p className="section-subtitle">
-                A modern data science architecture built with Scikit-Learn and FastAPI for accurate clinical risk estimation.
+                A modern data science architecture built with Scikit-Learn and Flask for accurate clinical risk estimation.
               </p>
               <div className="steps-grid">
                 <article className="step-card">
@@ -43,8 +43,8 @@ function App() {
                 </article>
                 <article className="step-card">
                   <span className="step-number">3</span>
-                  <h3>Ensemble ML Inference</h3>
-                  <p>A tuned Random Forest classifier evaluates the feature vector across 150 decision trees to generate calibrated class probabilities.</p>
+                  <h3>Support Vector Classifier (SVM)</h3>
+                  <p>A Support Vector Classifier with linear kernel computes optimal hyperplane margins to generate calibrated risk probabilities.</p>
                 </article>
                 <article className="step-card">
                   <span className="step-number">4</span>
@@ -64,21 +64,22 @@ function App() {
                 It replaces heuristic guesswork with statistical machine learning models trained on the benchmark Pima Indians Diabetes Database from the National Institute of Diabetes and Digestive and Kidney Diseases.
               </p>
               <p>
-                The production architecture decouples training, hyperparameter tuning, fast async inference serving, and a responsive frontend interface.
+                The production architecture decouples model training, preprocessing with StandardScaler, high-performance REST API inference on Render, and an interactive React dashboard on Vercel.
               </p>
               
               <h2>Technology Stack</h2>
               <div className="tech-stack">
                 <span>Python 3.13</span>
-                <span>Scikit-Learn</span>
-                <span>FastAPI</span>
-                <span>Uvicorn</span>
+                <span>Scikit-Learn (SVC)</span>
+                <span>Flask</span>
+                <span>Gunicorn</span>
                 <span>Pandas</span>
                 <span>NumPy</span>
-                <span>SQLite</span>
                 <span>React 18</span>
                 <span>TypeScript</span>
                 <span>Vite</span>
+                <span>Render</span>
+                <span>Vercel</span>
               </div>
             </div>
           </section>

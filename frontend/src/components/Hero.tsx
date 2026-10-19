@@ -25,7 +25,7 @@ function Hero({ onNavigate }: HeroProps) {
             <span className="text-gradient"> Diabetes Detection</span>
           </h1>
           <p className="hero-subtitle">
-            An advanced machine learning platform powered by Scikit-Learn and FastAPI that analyzes 8 clinical biomarkers to deliver calibrated risk probabilities and explainable diagnostic insights.
+            An advanced machine learning platform powered by Scikit-Learn and Flask REST API that analyzes 8 clinical biomarkers to deliver calibrated risk probabilities and explainable diagnostic insights.
           </p>
           <div className="hero-actions">
             <button type="button" className="btn btn-primary btn-glow" onClick={() => onNavigate('predict')}>
@@ -44,16 +44,16 @@ function Hero({ onNavigate }: HeroProps) {
 
           <div className="hero-stats">
             <div className="stat-item">
-              <strong>86.4%</strong>
+              <strong>83.8%</strong>
               <span>Test Accuracy</span>
             </div>
             <div className="stat-item">
-              <strong>0.950</strong>
+              <strong>0.897</strong>
               <span>ROC - AUC Score</span>
             </div>
             <div className="stat-item">
-              <strong>150</strong>
-              <span>Ensemble Trees</span>
+              <strong>SVM</strong>
+              <span>Linear Kernel</span>
             </div>
             <div className="stat-item">
               <strong>8</strong>

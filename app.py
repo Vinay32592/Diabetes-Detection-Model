@@ -1,3 +1,7 @@
+"""
+WSGI Application Entrypoint.
+Exposes the Flask app instance for production Gunicorn deployment on Render.
+"""
 import os
 from backend.app import app
 

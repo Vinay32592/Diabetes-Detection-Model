@@ -27,8 +27,8 @@ function Home({ onNavigate }: HomeProps) {
             </article>
             <article className="step-card">
               <span className="step-number">3</span>
-              <h3>Ensemble ML Evaluation</h3>
-              <p>Our tuned Random Forest model evaluates nonlinear decision boundaries to output a calibrated risk probability.</p>
+              <h3>SVM Hyperplane Evaluation</h3>
+              <p>Our trained Support Vector Machine evaluates the optimal margin decision boundary to output a calibrated risk probability.</p>
             </article>
             <article className="step-card">
               <span className="step-number">4</span>

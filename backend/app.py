@@ -1,32 +1,22 @@
 import os
 import pickle
+from datetime import datetime
 import numpy as np
 import pandas as pd
 from flask import Flask, jsonify, request
 from flask_cors import CORS
-from datetime import datetime
 
 app = Flask(__name__)
-CORS(app)  # Allows your frontend (HTML/JS or React) to communicate with Flask
+CORS(app)
 
-# Determine paths for model and scaler
+# Load trained SVM model and StandardScaler
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 MODEL_PATH = os.path.join(BASE_DIR, "model.pkl")
 SCALER_PATH = os.path.join(BASE_DIR, "scaler.pkl")
 
-# Fallback to (1) files if downloaded with browser duplicate names
-if not os.path.exists(MODEL_PATH) and os.path.exists(os.path.join(BASE_DIR, "model (1).pkl")):
-    MODEL_PATH = os.path.join(BASE_DIR, "model (1).pkl")
-
-if not os.path.exists(SCALER_PATH) and os.path.exists(os.path.join(BASE_DIR, "scaler (1).pkl")):
-    SCALER_PATH = os.path.join(BASE_DIR, "scaler (1).pkl")
-
-# Load the saved model and scaler from Colab
-print(f"[*] Loading model from {MODEL_PATH}...")
 with open(MODEL_PATH, "rb") as f:
     classifier = pickle.load(f)
 
-print(f"[*] Loading scaler from {SCALER_PATH}...")
 with open(SCALER_PATH, "rb") as f:
     scaler = pickle.load(f)
 

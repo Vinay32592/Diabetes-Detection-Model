@@ -55,7 +55,6 @@ Diabetes Detection/
 │   ├── app.py                 # Flask REST API (serves Colab ML model)
 │   ├── model.pkl              # Trained SVM model from Colab
 │   ├── scaler.pkl             # Fitted StandardScaler from Colab
-│   ├── requirements.txt       # Backend Python dependencies
 │   └── .env.example
 ├── frontend/
 │   ├── src/                   # React 18 + TypeScript source code
@@ -65,7 +64,6 @@ Diabetes Detection/
 │   │   ├── types/             # TypeScript interfaces
 │   │   └── index.css          # Curated dark-glassmorphism theme
 │   ├── package.json
-│   ├── vercel.json            # Vercel SPA routing rewrites
 │   └── vite.config.ts
 ├── ml/
 │   ├── data/
@@ -75,7 +73,7 @@ Diabetes Detection/
 │   ├── predictor.py           # Python ML inference engine
 │   └── eda.py                 # Exploratory Data Analysis
 ├── app.py                     # Root entrypoint for Gunicorn on Render
-├── requirements.txt           # Root Python dependencies for Render
+├── requirements.txt           # Unified Python dependencies for Render & ML
 └── README.md
 ```
 
