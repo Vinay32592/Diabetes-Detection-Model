@@ -1,6 +1,20 @@
 # AI-Powered Diabetes Detection System (Machine Learning)
 
-An end-to-end Machine Learning web application engineered for clinical diabetes screening and risk evaluation. Powered by a hyperparameter-optimized **Random Forest Classifier** trained on the **Pima Indians Diabetes Database**, served through a high-performance **FastAPI** Python REST API, and visualized with a modern **React + TypeScript** interface.
+[![Frontend on Vercel](https://img.shields.io/badge/Frontend-Vercel%20Live-black?style=for-the-badge&logo=vercel)](https://diabetes-detection-model-pi.vercel.app/)
+[![Backend on Render](https://img.shields.io/badge/Backend-Render%20Live-46E3B7?style=for-the-badge&logo=render&logoColor=black)](https://diabetes-detection-model-rkzs.onrender.com/)
+[![GitHub Repo](https://img.shields.io/badge/GitHub-Repository-181717?style=for-the-badge&logo=github)](https://github.com/Vinay32592/Diabetes-Detection-Model)
+[![Python 3.13](https://img.shields.io/badge/Python-3.13-3776AB?style=for-the-badge&logo=python&logoColor=white)](https://www.python.org/)
+[![React 18](https://img.shields.io/badge/React-18-61DAFB?style=for-the-badge&logo=react&logoColor=black)](https://react.dev/)
+
+An end-to-end Machine Learning web application engineered for clinical diabetes screening and risk evaluation. Powered by a hyperparameter-optimized **Support Vector Machine (SVM) Classifier** trained on the **Pima Indians Diabetes Database**, served through a high-performance **Flask + Gunicorn** Python REST API on **Render**, and visualized with a responsive **React + TypeScript + Vite** interface deployed on **Vercel**.
+
+---
+
+## Live Deployments
+
+- 🌐 **Live Web Application (Frontend)**: [https://diabetes-detection-model-pi.vercel.app/](https://diabetes-detection-model-pi.vercel.app/)
+- 🚀 **Live ML REST API (Backend)**: [https://diabetes-detection-model-rkzs.onrender.com/](https://diabetes-detection-model-rkzs.onrender.com/)
+- 📦 **GitHub Repository**: [https://github.com/Vinay32592/Diabetes-Detection-Model](https://github.com/Vinay32592/Diabetes-Detection-Model)
 
 ---
 
@@ -8,11 +22,11 @@ An end-to-end Machine Learning web application engineered for clinical diabetes 
 
 | Domain | Technologies |
 |---|---|
-| **Machine Learning** | Python 3.13, Scikit-Learn, Pandas, NumPy, Joblib |
-| **Data Visualization & Analytics** | Matplotlib, Seaborn |
-| **Backend REST API** | FastAPI, Uvicorn (ASGI), Pydantic v2 |
-| **Persistence & History** | SQLite, SQLAlchemy ORM |
-| **Frontend Application** | React 18, TypeScript, Vite, Lucide Icons, Modern CSS |
+| **Machine Learning** | Python 3.13, Scikit-Learn (SVM / SVC), Pandas, NumPy, StandardScaler |
+| **Data Analytics** | Matplotlib, Seaborn, Cross-Validation |
+| **Backend REST API** | Flask, Flask-CORS, Gunicorn (Production WSGI) |
+| **Frontend Application** | React 18, TypeScript, Vite, Lucide Icons, Vanilla CSS Design System |
+| **Cloud Hosting** | **Render** (Python Backend) & **Vercel** (React Frontend) |
 
 ---
 
@@ -20,22 +34,16 @@ An end-to-end Machine Learning web application engineered for clinical diabetes 
 
 1. **Cohort Dataset**:
    - **Pima Indians Diabetes Database** (National Institute of Diabetes and Digestive and Kidney Diseases).
-   - 768 patient records with 8 physiological biomarkers.
-2. **Preprocessing & Missing Value Imputation**:
-   - Biologically impossible zeroes in clinical lab measurements (`Glucose`, `BloodPressure`, `SkinThickness`, `Insulin`, `BMI`) are treated as missing values and imputed using class-conditional medians during training, and population medians during live inference.
-3. **Feature Standardization**:
-   - Continuous physiological features are standardized to zero-mean and unit-variance using `StandardScaler`.
-4. **Model Benchmarking (5-Fold Stratified Cross-Validation)**:
-   - 5 diverse machine learning algorithms were benchmarked:
-     - **Tuned Random Forest Classifier** (Primary Active Model: **86.4% Accuracy, 0.950 ROC-AUC, 80.4% F1-Score**)
-     - **Gradient Boosting Classifier** (87.0% Accuracy, 0.955 ROC-AUC)
-     - **Support Vector Classifier (SVC)** (83.8% Accuracy, 0.897 ROC-AUC)
-     - **K-Nearest Neighbors (k-NN)** (80.5% Accuracy, 0.868 ROC-AUC)
-     - **Logistic Regression** (70.8% Accuracy, 0.826 ROC-AUC)
-5. **Model Serialization**:
-   - Serialized artifacts (`diabetes_model.joblib`, `scaler.joblib`, `model_metadata.json`, `imputer_medians.json`) enable sub-millisecond inference.
-6. **Explainability**:
-   - Relative Gini importance and individual patient biomarker contribution index for every prediction.
+   - 768 patient records with 8 physiological biomarkers (`Pregnancies`, `Glucose`, `BloodPressure`, `SkinThickness`, `Insulin`, `BMI`, `DiabetesPedigreeFunction`, `Age`).
+2. **Preprocessing & Standardization**:
+   - Continuous physiological features are standardized to zero-mean and unit-variance using `StandardScaler` to optimize SVM hyperplane boundary convergence.
+3. **Model Selection**:
+   - **Support Vector Classifier (SVC - Linear Kernel)** with cross-validated margin maximization.
+   - Evaluated alongside Random Forest, Gradient Boosting, k-NN, and Logistic Regression.
+4. **Model Serialization**:
+   - Serialized artifacts (`model.pkl` and `scaler.pkl`) enable sub-millisecond cloud inference.
+5. **Explainability**:
+   - Real-time clinical risk classification (Low / Moderate / High), probability score (0-100%), and individual biomarker contribution breakdown.
 
 ---
 
@@ -43,42 +51,37 @@ An end-to-end Machine Learning web application engineered for clinical diabetes 
 
 ```
 Diabetes Detection/
-├── ml/
-│   ├── data/
-│   │   └── diabetes.csv           # Pima Indians Diabetes Dataset (768 records)
-│   ├── models/
-│   │   ├── diabetes_model.joblib  # Trained Scikit-Learn ensemble model
-│   │   ├── scaler.joblib          # Fitted StandardScaler
-│   │   ├── imputer_medians.json   # Median values for missing lab imputation
-│   │   ├── model_metadata.json    # Complete benchmark metrics, ROC & CM data
-│   │   └── plots/                 # Matplotlib / Seaborn evaluation charts
-│   │       ├── confusion_matrix.png
-│   │       ├── feature_importance.png
-│   │       └── model_comparison.png
-│   ├── train.py                   # Model training & hyperparameter tuning pipeline
-│   ├── predictor.py               # Real-time Python ML inference engine
-│   └── eda.py                     # Exploratory Data Analysis script
 ├── backend/
-│   ├── app.py                     # Flask REST API (serves Colab ML model)
-│   ├── model.pkl                  # Trained SVM model from Colab
-│   ├── scaler.pkl                 # Fitted StandardScaler from Colab
-│   ├── requirements.txt           # Python backend dependencies
-│   ├── .env                       # Environment configuration
+│   ├── app.py                 # Flask REST API (serves Colab ML model)
+│   ├── model.pkl              # Trained SVM model from Colab
+│   ├── scaler.pkl             # Fitted StandardScaler from Colab
+│   ├── requirements.txt       # Backend Python dependencies
+│   ├── Procfile               # Gunicorn process definition
 │   └── .env.example
 ├── frontend/
-│   ├── public/
-│   │   └── simple-test.html       # Standalone HTML test client (zero npm setup)
-│   ├── src/                       # React 18 + TypeScript source code
-│   │   ├── components/            # Reusable UI components (ResultCard, Form, Navbar)
-│   │   ├── pages/                 # Home, Prediction, ModelInsights, History
-│   │   ├── services/              # API client (fetch, types)
-│   │   ├── types/                 # TypeScript interfaces
-│   │   └── index.css              # Custom styling & glassmorphism theme
+│   ├── src/                   # React 18 + TypeScript source code
+│   │   ├── components/        # Reusable UI components (ResultCard, Form, Navbar, Hero)
+│   │   ├── pages/             # Home, Prediction, ModelInsights, History
+│   │   ├── services/          # API client (fetch, types)
+│   │   ├── types/             # TypeScript interfaces
+│   │   └── index.css          # Curated dark-glassmorphism theme
 │   ├── package.json
+│   ├── vercel.json            # Vercel SPA routing rewrites
 │   └── vite.config.ts
-├── requirements.txt               # Root Python dependencies
+├── ml/
+│   ├── data/
+│   │   └── diabetes.csv       # Pima Indians Diabetes Dataset
+│   ├── models/                # Benchmark models and diagnostic plots
+│   ├── train.py               # ML training & benchmark pipeline
+│   ├── predictor.py           # Python ML inference engine
+│   └── eda.py                 # Exploratory Data Analysis
+├── app.py                     # Root entrypoint for Gunicorn / Render
+├── main.py                    # Root entrypoint for alternative runners
+├── Procfile                   # Cloud web process definition
+├── requirements.txt           # Root Python dependencies for Render
 └── README.md
 ```
+
 
 ---
 
